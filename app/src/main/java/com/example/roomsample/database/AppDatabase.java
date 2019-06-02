@@ -7,7 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import com.example.roomsample.Entity.Task;
 import com.example.roomsample.dao.TaskDao;
 
-@Database(entities = {Task.class}, version =1)
+@Database(entities = {Task.class}, version =1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TaskDao taskDao();
 }

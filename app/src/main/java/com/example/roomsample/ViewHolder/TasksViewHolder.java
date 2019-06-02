@@ -1,5 +1,6 @@
 package com.example.roomsample.ViewHolder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.roomsample.Entity.Task;
 import com.example.roomsample.R;
+import com.example.roomsample.UpdateTaskActivity;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     public TextView textViewStatus, textViewTask, textViewDesc, textViewFinishBy;
     private List<Task> taskList;
+    private Context mContext;
 
     public TasksViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -30,8 +33,9 @@ public class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @Override
     public void onClick(View view) {
         Task task = taskList.get(getAdapterPosition());
-        Intent intent = new Intent();
-
+        Intent intent = new Intent(mContext, UpdateTaskActivity.class);
+        intent.putExtra("task", task);
+        mContext.startActivity(intent);
 
     }
 }
